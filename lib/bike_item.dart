@@ -22,6 +22,22 @@ class BikeItem extends Equatable {
       this.description = ""})
       : this.id = id ?? Uuid().v1();
 
+
+  BikeItem fromJson(Map<String, Object> json) {
+   return BikeItem(
+     id: json["id"],
+     frameSize: json["frameSize"],
+     category: json["category"],
+     location: json["location"],
+     name: json["name"],
+     photoUrl: json["photoUrk"],
+     priceRange: json["priceRange"],
+     description: json["description"]
+   );
+  }
+
+
+
   BikeItem copyWith(
       {String id,
       String frameSize,
