@@ -1,4 +1,4 @@
-import 'package:is_coding_task/bike_item.dart';
+import 'package:is_coding_task/model/bike_item.dart';
 
 class Repository {
 

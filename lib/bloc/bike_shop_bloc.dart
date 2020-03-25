@@ -3,7 +3,7 @@ import 'dart:core';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:is_coding_task/bike_item.dart';
+import 'package:is_coding_task/model/bike_item.dart';
 import 'package:is_coding_task/bloc/bike_shop_event.dart';
 import 'package:is_coding_task/bloc/bike_shop_state.dart';
 import 'package:is_coding_task/repository.dart';

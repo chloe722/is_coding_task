@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:is_coding_task/bloc/barrel.dart';
 import 'package:is_coding_task/bloc_delegate.dart';
+import 'package:is_coding_task/constants.dart';
 import 'package:is_coding_task/routes.dart';
 import 'package:is_coding_task/screens/add_bike_screen.dart';
 import 'package:is_coding_task/screens/detail_screen.dart';
@@ -26,7 +27,7 @@ class BikeShopApp extends StatelessWidget {
     return MaterialApp(
       title: 'Bike Shop',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryIconTheme: IconThemeData(color: kDarkGreen),
       ),
       routes: {
         Routes.home: (context) {

@@ -37,7 +37,6 @@ class BikeItem extends Equatable {
   }
 
 
-
   BikeItem copyWith(
       {String id,
       String frameSize,
