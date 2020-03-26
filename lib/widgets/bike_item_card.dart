@@ -3,7 +3,7 @@ import 'package:is_coding_task/model/bike_item.dart';
 import 'package:is_coding_task/constants.dart';
 import 'package:is_coding_task/screens/detail_screen.dart';
 import 'package:is_coding_task/size_config.dart';
-import 'package:is_coding_task/spacer.dart';
+import 'package:is_coding_task/widgets/spacer.dart';
 import 'package:is_coding_task/widgets/bike_image_section.dart';
 
 class BikeItemCard extends StatelessWidget {

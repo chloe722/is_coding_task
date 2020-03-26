@@ -3,38 +3,43 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:is_coding_task/bloc/barrel.dart';
 import 'package:is_coding_task/bloc_delegate.dart';
 import 'package:is_coding_task/constants.dart';
-import 'package:is_coding_task/routes.dart';
-import 'package:is_coding_task/screens/add_bike_screen.dart';
-import 'package:is_coding_task/screens/detail_screen.dart';
-import 'package:is_coding_task/screens/home_screen.dart';
 import 'package:is_coding_task/repository.dart';
+import 'package:is_coding_task/routes.dart';
+import 'package:is_coding_task/screens/edit_add_bike_screen.dart';
+import 'package:is_coding_task/screens/home_screen.dart';
 
 void main() {
   BlocSupervisor.delegate = SimpleBlocDelegate();
 
   runApp(BlocProvider(
-    create: (context) {
-      return BikeShopBloc(
-        repository: Repository(),
-      )..add(LoadBikes());
-    }, child: BikeShopApp()));
+      create: (context) {
+        return BikeShopBloc(
+          repository: Repository(),
+        )..add(LoadBikes());
+      },
+      child: BikeShopApp()));
 }
 
 class BikeShopApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Bike Shop',
       theme: ThemeData(
-        primaryIconTheme: IconThemeData(color: kDarkGreen),
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: kDarkGreen
+        ),
+        appBarTheme: AppBarTheme(
+            elevation: 0.0,
+            color: Colors.white,
+            iconTheme: IconThemeData(color: kDarkGreen)),
       ),
       routes: {
         Routes.home: (context) {
           return HomeScreen();
         },
         Routes.addBikeItem: (context) {
-          return AddBikeScreen();
+          return EditAddScreen();
         },
       },
     );

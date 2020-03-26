@@ -2,7 +2,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:is_coding_task/model/bike_item.dart';
-import 'package:is_coding_task/constants.dart';
 import 'package:is_coding_task/widgets/category_tag.dart';
 
 class BikeImageSection extends StatelessWidget {

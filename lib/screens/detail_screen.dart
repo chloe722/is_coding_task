@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:is_coding_task/constants.dart';
 import 'package:is_coding_task/model/bike_item.dart';
 import 'package:is_coding_task/size_config.dart';
-import 'package:is_coding_task/spacer.dart';
+import 'package:is_coding_task/strings.dart';
+import 'package:is_coding_task/widgets/spacer.dart';
 import 'package:is_coding_task/widgets/bike_image_section.dart';
 import 'package:is_coding_task/widgets/bike_info_item.dart';
 import 'package:is_coding_task/widgets/icon_item.dart';
@@ -16,8 +17,6 @@ class DetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0.0,
-        backgroundColor: Colors.white,
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.settings),
@@ -49,8 +48,8 @@ class DetailScreen extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  InfoItem(title: "Frame Size", info: bikeItem.frameSize),
-                  InfoItem(title: "Price Range", info: bikeItem.priceRange),
+                  InfoItem(title: kBikeFrameSizeLabel, info: bikeItem.frameSize),
+                  InfoItem(title: kBikePriceRangeLabel, info: bikeItem.priceRange),
                 ],
               ),
             ],
