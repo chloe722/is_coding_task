@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:is_coding_task/model/bike_item.dart';
 import 'package:is_coding_task/size_config.dart';
 
-class IconItem extends StatelessWidget {
-  IconItem(this.bikeItem);
+class IconItemRow extends StatelessWidget {
+  IconItemRow({@required this.label, @required this.icon})
+      : assert(label != null, icon != null);
 
-  final BikeItem bikeItem;
+  final String label;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +15,9 @@ class IconItem extends StatelessWidget {
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.only(right: 4.0),
-          child: Icon(Icons.location_on, size: SizeConfig.safeBlockHorizontal * 5),
+          child: Icon(icon, size: SizeConfig.safeBlockHorizontal * 5),
         ),
-        Text(bikeItem.location, softWrap: true)
+        Text(label, softWrap: true)
       ],
     );
   }

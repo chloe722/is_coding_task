@@ -6,7 +6,7 @@ import 'package:is_coding_task/widgets/category_tag.dart';
 import 'package:is_coding_task/widgets/center_indicator.dart';
 
 class BikeImageSection extends StatelessWidget {
-  BikeImageSection({this.bikeItem, this.imageHeight, this.imageWidth});
+  BikeImageSection({@required this.bikeItem, this.imageHeight, this.imageWidth}): assert(bikeItem != null);
 
   final BikeItem bikeItem;
   final double imageHeight;
@@ -25,7 +25,7 @@ class BikeImageSection extends StatelessWidget {
         ),
         Align(
           alignment: Alignment.topLeft,
-          child: CategoryTag(title: bikeItem.category)
+          child: CategoryTag(bikeItem.category)
         ),
       ],
     );

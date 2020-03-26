@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:is_coding_task/constants.dart';
 
-class InfoItem extends StatelessWidget {
-  InfoItem({this.title, this.info});
+class BikeInfoItem extends StatelessWidget {
+  BikeInfoItem({@required this.title, @required this.info})
+      : assert(title != null, info != null);
 
   final String title;
   final String info;
@@ -23,7 +24,7 @@ class InfoItem extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
               child:
-              Text(info, style: kTitleTextStyle.copyWith(fontSize: 20.0)),
+                  Text(info, style: kTitleTextStyle.copyWith(fontSize: 20.0)),
             ),
             Text(title),
           ],

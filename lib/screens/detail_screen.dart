@@ -56,7 +56,7 @@ class DetailScreen extends StatelessWidget {
                     bikeItem: bikeItem,
                     imageWidth: SizeConfig.screenWidth,
                     imageHeight: SizeConfig.screenHeight / 2.5),
-                IconItem(bikeItem),
+                IconItemRow(label: bikeItem.location,icon: Icons.location_on),
                 VerticalSpacer(),
                 Text(bikeItem.name,
                     style: kTitleTextStyle.copyWith(fontSize: 25.0),
@@ -68,9 +68,9 @@ class DetailScreen extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    InfoItem(
+                    BikeInfoItem(
                         title: kBikeFrameSizeLabel, info: bikeItem.frameSize),
-                    InfoItem(
+                    BikeInfoItem(
                         title: kBikePriceRangeLabel, info: bikeItem.priceRange),
                   ],
                 ),

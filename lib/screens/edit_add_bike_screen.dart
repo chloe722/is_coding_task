@@ -7,6 +7,7 @@ import 'package:is_coding_task/model/data.dart';
 import 'package:is_coding_task/size_config.dart';
 import 'package:is_coding_task/strings.dart';
 import 'package:is_coding_task/widgets/center_indicator.dart';
+import 'package:is_coding_task/widgets/rounded_button.dart';
 import 'package:is_coding_task/widgets/spacer.dart';
 
 typedef OnSaveCallback = Function(BikeItem bikeItem);
@@ -214,17 +215,10 @@ class _EditAddScreenState extends State<EditAddScreen> {
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: ButtonTheme(
-                minWidth: SizeConfig.screenWidth,
-                padding: EdgeInsets.symmetric(vertical: 16.0),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0)),
-                child: RaisedButton(
-                  color: kDarkGreen,
-                  child: Text("Save", style: TextStyle(color: Colors.white)),
-                  onPressed: () => _onSave(),
-                ),
-              ),
+              child: RoundedButton(
+                label: "SAVE",
+                onPressed: _onSave,
+              )
             )
           ],
         ));

@@ -29,7 +29,6 @@ dependencies:
   equatable: 1.1.1
   uuid: 2.0.4
   cached_network_image: 2.0.0
-  flutter_icons: 1.0.0+1
   fluttertoast: 4.0.1
 
 dev_dependencies:
