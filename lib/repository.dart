@@ -10,16 +10,24 @@ class Repository {
     return parsed.map<BikeItem>((jsonData) => BikeItem.fromJson(jsonData)).toList();
   }
 
-  void addBikeItem() {}
 
-
-  void updateBikeItem(){
+  void addBikeItem(BikeItem bikeItem) {
+    //Here we can write code to sync with backend/database
   }
 
 
-  void deleteBikeItem(){}
+  void updateBikeItem(BikeItem bikeItem){
+    //Here we can write code to sync with backend/database
+  }
 
 
-  void saveBikes(List<BikeItem> bikes){}
+  void deleteBikeItem(BikeItem bikeItem){
+    //Here we can write code to sync with backend/database
+  }
+
+
+  void saveBikes(List<BikeItem> bikes){
+    //Here we can write code to sync with backend/database
+  }
 
 }

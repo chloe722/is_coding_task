@@ -27,33 +27,45 @@ class BikeItemCard extends StatelessWidget {
             padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
             child: Column(
               children: <Widget>[
-                Stack(
-                  children: <Widget>[
-                    BikeImageSection(
-                      bikeItem: bikeItem,
-                      imageHeight: SizeConfig.screenHeight / 5,
-                      imageWidth: SizeConfig.screenWidth,
-                    ),
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: IconButton(
-                        onPressed: () {
-                          BlocProvider.of<BikeShopBloc>(context)
-                              .add(DeleteBikeItem(bikeItem));
-                        },
-                        icon: Icon(
-                          Icons.delete_outline,
-                          size: 35.0,
-                        ),
-                      ),
-                    )
-                  ],
-                ),
+                ImageCategorySection(bikeItem),
                 VerticalSpacer(),
                 Text(bikeItem.name, style: kTitleTextStyle)
               ],
             )),
       ),
+    );
+  }
+}
+
+
+class ImageCategorySection extends StatelessWidget {
+  ImageCategorySection(this.bikeItem) : assert(bikeItem != null);
+
+  final BikeItem bikeItem;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: <Widget>[
+        BikeImageSection(
+          bikeItem: bikeItem,
+          imageHeight: SizeConfig.screenHeight / 5,
+          imageWidth: SizeConfig.screenWidth,
+        ),
+        Align(
+          alignment: Alignment.topRight,
+          child: IconButton(
+            onPressed: () {
+              BlocProvider.of<BikeShopBloc>(context)
+                  .add(DeleteBikeItem(bikeItem));
+            },
+            icon: Icon(
+              Icons.delete_outline,
+              size: 35.0,
+            ),
+          ),
+        )
+      ],
     );
   }
 }
