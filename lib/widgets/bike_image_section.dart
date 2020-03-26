@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:is_coding_task/model/bike_item.dart';
 import 'package:is_coding_task/widgets/category_tag.dart';
+import 'package:is_coding_task/widgets/center_indicator.dart';
 
 class BikeImageSection extends StatelessWidget {
   BikeImageSection({this.bikeItem, this.imageHeight, this.imageWidth});
@@ -17,7 +18,7 @@ class BikeImageSection extends StatelessWidget {
       children: <Widget>[
         CachedNetworkImage(
           imageUrl: bikeItem.photoUrl,
-          placeholder: (context, url) => CircularProgressIndicator(),
+          placeholder: (context, url) => CenterIndicator(),
           fit: BoxFit.contain,
           height: imageHeight,
           width: imageWidth

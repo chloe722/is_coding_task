@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:is_coding_task/bloc/barrel.dart';
 import 'package:is_coding_task/constants.dart';
 import 'package:is_coding_task/model/bike_item.dart';
 import 'package:is_coding_task/screens/edit_add_bike_screen.dart';
@@ -22,18 +24,29 @@ class DetailScreen extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.settings),
             onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => EditAddScreen(bikeItem: bikeItem, isEditing: true),
+              builder: (context) => EditAddScreen(
+                  bikeItem: bikeItem,
+                  isEditing: true,
+                  onSave: (bikeItemVal) {
+                    BlocProvider.of<BikeShopBloc>(context).add(UpdateBikeItem(
+                      bikeItem.copyWith(
+                          name: bikeItemVal.name,
+                          category: bikeItemVal.category,
+                          location: bikeItemVal.location,
+                          frameSize: bikeItemVal.frameSize,
+                          priceRange: bikeItemVal.priceRange,
+                          description: bikeItemVal.description,
+                          photoUrl: bikeItemVal.photoUrl),
+                    ));
+                  }),
             )),
             color: kDarkGreen,
           )
         ],
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 16.0),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.start,
+          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          child: ListView(
             children: <Widget>[
               BikeImageSection(
                   bikeItem: bikeItem,
@@ -49,17 +62,16 @@ class DetailScreen extends StatelessWidget {
               VerticalSpacer(),
               Row(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  InfoItem(title: kBikeFrameSizeLabel, info: bikeItem.frameSize),
-                  InfoItem(title: kBikePriceRangeLabel, info: bikeItem.priceRange),
+                  InfoItem(
+                      title: kBikeFrameSizeLabel, info: bikeItem.frameSize),
+                  InfoItem(
+                      title: kBikePriceRangeLabel, info: bikeItem.priceRange),
                 ],
               ),
             ],
-          ),
-        ),
-      ),
+          )),
     );
   }
 }
-

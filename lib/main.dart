@@ -39,7 +39,12 @@ class BikeShopApp extends StatelessWidget {
           return HomeScreen();
         },
         Routes.addBikeItem: (context) {
-          return EditAddScreen();
+          return EditAddScreen(
+            isEditing: false,
+            onSave: (bikeItemVal) {
+            BlocProvider.of<BikeShopBloc>(context).add(AddBikeItem(bikeItemVal));
+          },
+          );
         },
       },
     );

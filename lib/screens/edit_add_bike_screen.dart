@@ -6,14 +6,17 @@ import 'package:is_coding_task/model/bike_item.dart';
 import 'package:is_coding_task/model/data.dart';
 import 'package:is_coding_task/size_config.dart';
 import 'package:is_coding_task/strings.dart';
+import 'package:is_coding_task/widgets/center_indicator.dart';
 import 'package:is_coding_task/widgets/spacer.dart';
 
+typedef OnSaveCallback = Function(BikeItem bikeItem);
+
 class EditAddScreen extends StatefulWidget {
-  EditAddScreen({this.bikeItem, this.isEditing = false, this.onSave});
+  EditAddScreen({this.bikeItem, this.isEditing = false, @required this.onSave});
 
   final BikeItem bikeItem;
   final bool isEditing;
-  final VoidCallback onSave;
+  final OnSaveCallback onSave;
 
   @override
   _EditAddScreenState createState() => _EditAddScreenState();
@@ -23,30 +26,42 @@ class _EditAddScreenState extends State<EditAddScreen> {
   static final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   bool get _isEditing => widget.isEditing;
-
   String _bikeName;
   String _category;
   String _location;
   String _selectedFrameSize;
   String _selectedPrice;
   String _description;
-
+  String _bikePhotoUrl;
 
   @override
   void initState() {
     if (_isEditing) {
       _selectedFrameSize = widget.bikeItem.frameSize;
       _selectedPrice = widget.bikeItem.priceRange;
+      _bikePhotoUrl = widget.bikeItem.photoUrl;
+    } else {
+      _bikePhotoUrl = bikePlaceHolderImage;
     }
     super.initState();
   }
 
-
   void _onSave() {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
-      print(
-          "$_bikeName $_category $_location $_selectedFrameSize $_selectedPrice$_description");
+
+      //TODO check again
+      BikeItem _bikeItem = BikeItem(
+          name: _bikeName,
+          category: _category,
+          location: _location,
+          frameSize: _selectedFrameSize,
+          priceRange: _selectedPrice,
+          description: _description,
+          photoUrl: _bikePhotoUrl);
+
+      widget.onSave(_bikeItem);
+      Navigator.pop(context);
     }
   }
 
@@ -64,9 +79,8 @@ class _EditAddScreenState extends State<EditAddScreen> {
                   child: ListView(
                     children: <Widget>[
                       CachedNetworkImage(
-                          imageUrl: bikePlaceHolderImage,
-                          placeholder: (context, url) =>
-                              CircularProgressIndicator(),
+                          imageUrl: _bikePhotoUrl,
+                          placeholder: (context, url) => CenterIndicator(),
                           fit: BoxFit.contain,
                           height: SizeConfig.screenHeight / 4,
                           width: SizeConfig.screenWidth),
@@ -133,7 +147,7 @@ class _EditAddScreenState extends State<EditAddScreen> {
                           });
                         },
                         validator: (val) {
-                          return val == null? kFrameSizeError : null;
+                          return val == null ? kFrameSizeError : null;
                         },
                         onSaved: (val) => _selectedFrameSize = val,
                         value: _selectedFrameSize,
@@ -152,7 +166,7 @@ class _EditAddScreenState extends State<EditAddScreen> {
                             labelText: kBikePriceRangeLabel,
                             icon: Icon(Icons.attach_money)),
                         validator: (val) {
-                          return val == null? kPriceRangeError : null;
+                          return val == null ? kPriceRangeError : null;
                         },
                         onChanged: (val) {
                           setState(() {
@@ -172,7 +186,7 @@ class _EditAddScreenState extends State<EditAddScreen> {
                       TextFormField(
                         autofocus: !_isEditing,
                         initialValue:
-                        _isEditing ? widget.bikeItem.description : "",
+                            _isEditing ? widget.bikeItem.description : "",
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
                         decoration: kFormFieldDecoration.copyWith(

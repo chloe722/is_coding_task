@@ -11,8 +11,6 @@ class IconItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.only(right: 4.0),
