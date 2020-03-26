@@ -16,7 +16,7 @@ class IconItem extends StatelessWidget {
           padding: const EdgeInsets.only(right: 4.0),
           child: Icon(Icons.location_on, size: SizeConfig.safeBlockHorizontal * 5),
         ),
-        Text(bikeItem.location)
+        Text(bikeItem.location, softWrap: true)
       ],
     );
   }

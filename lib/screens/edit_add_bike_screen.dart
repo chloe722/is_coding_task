@@ -27,8 +27,8 @@ class _EditAddScreenState extends State<EditAddScreen> {
 
   bool get _isEditing => widget.isEditing;
   String _bikeName;
-  String _category;
   String _location;
+  String _selectedCategory;
   String _selectedFrameSize;
   String _selectedPrice;
   String _description;
@@ -37,6 +37,7 @@ class _EditAddScreenState extends State<EditAddScreen> {
   @override
   void initState() {
     if (_isEditing) {
+      _selectedCategory = widget.bikeItem.category;
       _selectedFrameSize = widget.bikeItem.frameSize;
       _selectedPrice = widget.bikeItem.priceRange;
       _bikePhotoUrl = widget.bikeItem.photoUrl;
@@ -52,7 +53,7 @@ class _EditAddScreenState extends State<EditAddScreen> {
 
       BikeItem _bikeItem = BikeItem(
           name: _bikeName,
-          category: _category,
+          category: _selectedCategory,
           location: _location,
           frameSize: _selectedFrameSize,
           priceRange: _selectedPrice,
@@ -90,6 +91,8 @@ class _EditAddScreenState extends State<EditAddScreen> {
                         maxLines: null,
                         initialValue: _isEditing ? widget.bikeItem.name : "",
                         decoration: kFormFieldDecoration.copyWith(
+                            contentPadding: EdgeInsets.symmetric(
+                                vertical: 24.0, horizontal: 16.0),
                             labelText: kBikeNameLabel, icon: Icon(Icons.label)),
                         validator: (val) {
                           return val.trim().isEmpty
@@ -99,22 +102,25 @@ class _EditAddScreenState extends State<EditAddScreen> {
                         onSaved: (val) => _bikeName = val,
                       ),
                       VerticalSpacer(height: 24),
-                      TextFormField(
-                        autofocus: !_isEditing,
-                        initialValue:
-                            _isEditing ? widget.bikeItem.category : "",
-                        keyboardType: TextInputType.multiline,
-                        maxLines: null,
+                      DropdownButtonFormField(
                         decoration: kFormFieldDecoration.copyWith(
                             labelText: kCategoryLabel,
-                            icon: Icon(Icons.category),
-                            hintText: kCategoryHint),
+                            icon: Icon(Icons.category)),
                         validator: (val) {
-                          return val.trim().isEmpty
-                              ? kCategoryErrorLabel
-                              : null;
+                          return val == null ? kCategoryErrorLabel : null;
                         },
-                        onSaved: (val) => _category = val,
+                        onChanged: (val) {
+                          setState(() {
+                            _selectedCategory = val;
+                          });
+                        },
+                        onSaved: (val) => _selectedCategory = val,
+                        value: _selectedCategory,
+                        items: categories
+                            .map((category) => DropdownMenuItem(
+                          child: Text(category),
+                          value: category,
+                        )).toList(),
                       ),
                       VerticalSpacer(height: 24),
                       TextFormField(
@@ -124,6 +130,8 @@ class _EditAddScreenState extends State<EditAddScreen> {
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
                         decoration: kFormFieldDecoration.copyWith(
+                            contentPadding: EdgeInsets.symmetric(
+                                vertical: 24.0, horizontal: 16.0),
                             labelText: kLocationLabel,
                             icon: Icon(Icons.location_on)),
                         validator: (val) {
@@ -136,8 +144,6 @@ class _EditAddScreenState extends State<EditAddScreen> {
                       VerticalSpacer(height: 24),
                       DropdownButtonFormField(
                         decoration: kFormFieldDecoration.copyWith(
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 8.0, horizontal: 16.0),
                             labelText: kBikeFrameSizeLabel,
                             icon: Icon(Icons.directions_bike)),
                         onChanged: (val) {
@@ -160,8 +166,6 @@ class _EditAddScreenState extends State<EditAddScreen> {
                       VerticalSpacer(height: 24),
                       DropdownButtonFormField(
                         decoration: kFormFieldDecoration.copyWith(
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 8.0, horizontal: 16.0),
                             labelText: kBikePriceRangeLabel,
                             icon: Icon(Icons.attach_money)),
                         validator: (val) {
@@ -187,8 +191,11 @@ class _EditAddScreenState extends State<EditAddScreen> {
                         initialValue:
                             _isEditing ? widget.bikeItem.description : "",
                         keyboardType: TextInputType.multiline,
+
                         maxLines: null,
                         decoration: kFormFieldDecoration.copyWith(
+                            contentPadding: EdgeInsets.symmetric(
+                                vertical: 24.0, horizontal: 16.0),
                             labelText: kBikeDescriptionLabel,
                             hintText: kBikeDescriptionHint,
                             icon: Icon(Icons.description)),

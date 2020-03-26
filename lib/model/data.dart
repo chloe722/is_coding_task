@@ -48,7 +48,16 @@ List<BikeItem> bikes = [
 
 ];
 
-List<String>frameSizes = [
+List<String> categories = [
+  "Commuting",
+  "Mountain",
+  "Road",
+  "Hybrid"
+];
+
+
+
+List<String> frameSizes = [
   "S",
   "M",
   "L"

@@ -15,7 +15,7 @@ const kTitleTextStyle = TextStyle(
 );
 
 const kFormFieldDecoration = InputDecoration(
-  contentPadding: EdgeInsets.symmetric(vertical: 24.0, horizontal: 16.0),
+  contentPadding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
   border: OutlineInputBorder(
     borderRadius:  BorderRadius.all(Radius.circular(10.0)),
     borderSide: BorderSide.none,

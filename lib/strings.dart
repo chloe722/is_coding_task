@@ -2,7 +2,7 @@ const kBikeNameLabel = "Bike Name";
 const kBikeNameErrorLabel = "Please enter bike name";
 
 const kCategoryLabel = "Category";
-const kCategoryErrorLabel = "Please enter catrgory";
+const kCategoryErrorLabel = "Please select catrgory";
 const kCategoryHint = "Enter type of bike";
 
 const kLocationLabel = "Location";
