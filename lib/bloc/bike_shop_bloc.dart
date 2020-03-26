@@ -18,8 +18,7 @@ class BikeShopBloc extends Bloc<BikeShopEvent, BikeShopState> {
 
   @override
   Stream<BikeShopState> mapEventToState(BikeShopEvent event) async* {
-
-    if (event is BikeShopLoaded) {
+    if (event is LoadBikes) {
       yield* _mapLoadBikeShopToState();
 
     } else if (event is AddBikeItem) {
@@ -36,7 +35,6 @@ class BikeShopBloc extends Bloc<BikeShopEvent, BikeShopState> {
 
   Stream<BikeShopState> _mapLoadBikeShopToState() async* {
     final List<BikeItem> bikes = await repository.loadBikes();
-
     yield BikeShopLoaded(bikes);
   }
 
@@ -50,10 +48,10 @@ class BikeShopBloc extends Bloc<BikeShopEvent, BikeShopState> {
   }
 
   Stream<BikeShopState> _mapUpdateBikeItemToState(UpdateBikeItem event) async* {
-    if (event is BikeShopLoaded) {
+    if (state is BikeShopLoaded) {
       final List<BikeItem> updatedBikes =
           (state as BikeShopLoaded).bikes.map((bike) {
-        return bike.id == event.updatedBikeItem.id
+            return bike.id == event.updatedBikeItem.id
             ? event.updatedBikeItem
             : bike;
       }).toList();
@@ -64,19 +62,21 @@ class BikeShopBloc extends Bloc<BikeShopEvent, BikeShopState> {
   }
 
   Stream<BikeShopState> _mapDeleteBikeItemToState(DeleteBikeItem event) async* {
-    if (event is BikeShopLoaded) {
+    if (state is BikeShopLoaded) {
       final updatedBikes = (state as BikeShopLoaded)
           .bikes
           .where((bike) => bike.id != event.bikeItem.id)
           .toList();
       yield BikeShopLoaded(updatedBikes);
-            _saveBikes(updatedBikes);
+      _saveBikes(updatedBikes);
     }
   }
 
 
   //TODO: implement save
   void _saveBikes(List<BikeItem> bikes) {
+    print("save bikes : $bikes");
+
   }
 }
 

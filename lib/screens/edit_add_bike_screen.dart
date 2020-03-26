@@ -12,7 +12,7 @@ import 'package:is_coding_task/widgets/spacer.dart';
 typedef OnSaveCallback = Function(BikeItem bikeItem);
 
 class EditAddScreen extends StatefulWidget {
-  EditAddScreen({this.bikeItem, this.isEditing = false, @required this.onSave});
+  EditAddScreen({this.bikeItem, this.isEditing = false, @required this.onSave}) : assert(onSave != null);
 
   final BikeItem bikeItem;
   final bool isEditing;
@@ -50,7 +50,6 @@ class _EditAddScreenState extends State<EditAddScreen> {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
 
-      //TODO check again
       BikeItem _bikeItem = BikeItem(
           name: _bikeName,
           category: _category,

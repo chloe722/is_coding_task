@@ -23,14 +23,14 @@ class BikeItem extends Equatable {
       : this.id = id ?? Uuid().v1();
 
 
-  BikeItem fromJson(Map<String, Object> json) {
+  factory BikeItem.fromJson(Map<String, Object> json) {
    return BikeItem(
-     id: json["id"],
+     id: json["id"].toString(),
      frameSize: json["frameSize"],
      category: json["category"],
      location: json["location"],
      name: json["name"],
-     photoUrl: json["photoUrk"],
+     photoUrl: json["photoUrl"],
      priceRange: json["priceRange"],
      description: json["description"]
    );
@@ -50,7 +50,8 @@ class BikeItem extends Equatable {
         id: id ?? this.id,
         frameSize: frameSize ?? this.frameSize,
         category: category ?? this.category,
-        location: name ?? this.name,
+        location: location ?? this.location,
+        name: name?? this.name,
         photoUrl: photoUrl ?? this.photoUrl,
         priceRange: priceRange ?? this.priceRange,
         description: description ?? this.description);

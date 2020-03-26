@@ -12,66 +12,71 @@ import 'package:is_coding_task/widgets/bike_info_item.dart';
 import 'package:is_coding_task/widgets/icon_item.dart';
 
 class DetailScreen extends StatelessWidget {
-  DetailScreen(this.bikeItem);
+  DetailScreen(this.bikeId) : assert(bikeId != null);
 
-  final BikeItem bikeItem;
+  final String bikeId;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.settings),
-            onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => EditAddScreen(
-                  bikeItem: bikeItem,
-                  isEditing: true,
-                  onSave: (bikeItemVal) {
-                    BlocProvider.of<BikeShopBloc>(context).add(UpdateBikeItem(
-                      bikeItem.copyWith(
-                          name: bikeItemVal.name,
-                          category: bikeItemVal.category,
-                          location: bikeItemVal.location,
-                          frameSize: bikeItemVal.frameSize,
-                          priceRange: bikeItemVal.priceRange,
-                          description: bikeItemVal.description,
-                          photoUrl: bikeItemVal.photoUrl),
-                    ));
-                  }),
+    return BlocBuilder<BikeShopBloc, BikeShopState>(builder: (context, state) {
+      final bikeItem = (state as BikeShopLoaded)
+          .bikes
+          .firstWhere((bike) => bike.id == bikeId, orElse: () => null);
+      return Scaffold(
+        appBar: AppBar(
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.edit),
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => EditAddScreen(
+                    bikeItem: bikeItem,
+                    isEditing: true,
+                    onSave: (bikeItemVal) {
+                      BlocProvider.of<BikeShopBloc>(context).add(UpdateBikeItem(
+                        bikeItem.copyWith(
+                            name: bikeItemVal.name,
+                            category: bikeItemVal.category,
+                            location: bikeItemVal.location,
+                            frameSize: bikeItemVal.frameSize,
+                            priceRange: bikeItemVal.priceRange,
+                            description: bikeItemVal.description,
+                            photoUrl: bikeItemVal.photoUrl),
+                      ));
+                    }),
+              )),
+              color: kDarkGreen,
+            )
+          ],
+        ),
+        body: Container(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: ListView(
+              children: <Widget>[
+                BikeImageSection(
+                    bikeItem: bikeItem,
+                    imageWidth: SizeConfig.screenWidth,
+                    imageHeight: SizeConfig.screenHeight / 2.5),
+                IconItem(bikeItem),
+                VerticalSpacer(),
+                Text(bikeItem.name,
+                    style: kTitleTextStyle.copyWith(fontSize: 25.0),
+                    softWrap: true),
+                VerticalSpacer(),
+                Text(bikeItem.description, softWrap: true),
+                VerticalSpacer(),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    InfoItem(
+                        title: kBikeFrameSizeLabel, info: bikeItem.frameSize),
+                    InfoItem(
+                        title: kBikePriceRangeLabel, info: bikeItem.priceRange),
+                  ],
+                ),
+              ],
             )),
-            color: kDarkGreen,
-          )
-        ],
-      ),
-      body: Container(
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
-          child: ListView(
-            children: <Widget>[
-              BikeImageSection(
-                  bikeItem: bikeItem,
-                  imageWidth: SizeConfig.screenWidth,
-                  imageHeight: SizeConfig.screenHeight / 2.5),
-              IconItem(bikeItem),
-              VerticalSpacer(),
-              Text(bikeItem.name,
-                  style: kTitleTextStyle.copyWith(fontSize: 25.0),
-                  softWrap: true),
-              VerticalSpacer(),
-              Text(bikeItem.description, softWrap: true),
-              VerticalSpacer(),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  InfoItem(
-                      title: kBikeFrameSizeLabel, info: bikeItem.frameSize),
-                  InfoItem(
-                      title: kBikePriceRangeLabel, info: bikeItem.priceRange),
-                ],
-              ),
-            ],
-          )),
-    );
+      );
+    });
   }
 }

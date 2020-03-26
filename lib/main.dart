@@ -26,9 +26,8 @@ class BikeShopApp extends StatelessWidget {
     return MaterialApp(
       title: 'Bike Shop',
       theme: ThemeData(
-        floatingActionButtonTheme: FloatingActionButtonThemeData(
-          backgroundColor: kDarkGreen
-        ),
+        floatingActionButtonTheme:
+            FloatingActionButtonThemeData(backgroundColor: kDarkGreen),
         appBarTheme: AppBarTheme(
             elevation: 0.0,
             color: Colors.white,
@@ -42,8 +41,9 @@ class BikeShopApp extends StatelessWidget {
           return EditAddScreen(
             isEditing: false,
             onSave: (bikeItemVal) {
-            BlocProvider.of<BikeShopBloc>(context).add(AddBikeItem(bikeItemVal));
-          },
+              BlocProvider.of<BikeShopBloc>(context)
+                  .add(AddBikeItem(bikeItemVal));
+            },
           );
         },
       },

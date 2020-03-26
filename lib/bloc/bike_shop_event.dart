@@ -9,7 +9,8 @@ abstract class BikeShopEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class LoadBikes extends BikeShopEvent{}
+class LoadBikes extends BikeShopEvent{
+}
 
 class AddBikeItem extends BikeShopEvent{
   final BikeItem bikeItem;
@@ -33,7 +34,9 @@ class UpdateBikeItem extends BikeShopEvent{
   List<Object> get props => [updatedBikeItem];
 
   @override
-  String toString() => "UpdateBikeItem{updatedBikeItem: $updatedBikeItem}";
+  String toString() {
+    return "UpdateBikeItem{updatedBikeItem: $updatedBikeItem}";
+  }
 
 }
 
