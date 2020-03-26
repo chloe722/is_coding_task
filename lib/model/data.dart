@@ -1,5 +1,6 @@
 
 import 'package:is_coding_task/model/bike_item.dart';
+import 'package:is_coding_task/model/radio_model.dart';
 
 
 List<BikeItem> bikes = [
@@ -49,4 +50,16 @@ List<BikeItem> bikes = [
       description: "Great bike for doing sports or riding in mountains."
   )
 
+];
+
+List<String>frameSizes = [
+  "S",
+  "M",
+  "L"
+];
+
+List<String> priceRange = [
+  "Cheap",
+  "Normal",
+  "Expensive"
 ];

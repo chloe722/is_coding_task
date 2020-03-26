@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:is_coding_task/constants.dart';
 import 'package:is_coding_task/model/bike_item.dart';
+import 'package:is_coding_task/screens/edit_add_bike_screen.dart';
 import 'package:is_coding_task/size_config.dart';
 import 'package:is_coding_task/strings.dart';
 import 'package:is_coding_task/widgets/spacer.dart';
@@ -20,7 +21,9 @@ class DetailScreen extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.settings),
-            onPressed: () {},
+            onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => EditAddScreen(bikeItem: bikeItem, isEditing: true),
+            )),
             color: kDarkGreen,
           )
         ],

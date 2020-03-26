@@ -4,9 +4,17 @@ const kBikeNameErrorLabel = "Please enter bike name";
 const kCategoryLabel = "Category";
 const kCategoryErrorLabel = "Please enter catrgory";
 const kCategoryHint = "Enter type of bike";
+
 const kLocationLabel = "Location";
 const kLocationErrorLabel = "Please enter location";
 
+const kBikeDescriptionLabel = "Description";
+const kBikeDescriptionHint = "Describe the bike...";
+const kBikeDescriptionError = "Please enter description";
+
 
 const kBikeFrameSizeLabel = "Frame Size";
+const kFrameSizeError = "Please select frame size";
+
 const kBikePriceRangeLabel = "Price Range";
+const kPriceRangeError = "Please select price range";
