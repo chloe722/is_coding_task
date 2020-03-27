@@ -10,7 +10,7 @@ const kCategoryTagTextStyle = TextStyle(
 
 const kTitleTextStyle = TextStyle(
   color: kDarkGreen,
-  fontSize: 20.0,
+  fontSize: 16.0,
   fontWeight: FontWeight.bold
 );
 
@@ -25,7 +25,7 @@ const kFormFieldDecoration = InputDecoration(
   labelText: "",
   focusColor: kDarkGreen,
   hoverColor: kDarkGreen,
-  labelStyle: TextStyle(color: kDarkGreen, fontSize: 20.0)
+  labelStyle: TextStyle(color: kDarkGreen)
 );
 
 

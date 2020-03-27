@@ -59,7 +59,7 @@ class DetailScreen extends StatelessWidget {
                 IconItemRow(label: bikeItem.location,icon: Icons.location_on),
                 VerticalSpacer(),
                 Text(bikeItem.name,
-                    style: kTitleTextStyle.copyWith(fontSize: 25.0),
+                    style: kTitleTextStyle.copyWith(fontSize: 20.0),
                     softWrap: true),
                 VerticalSpacer(),
                 Text(bikeItem.description, softWrap: true),

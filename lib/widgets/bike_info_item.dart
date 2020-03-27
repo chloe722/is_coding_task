@@ -12,7 +12,7 @@ class BikeInfoItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Container(
-        padding: EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(8.0),
         decoration: BoxDecoration(
           color: Colors.white,
           shape: BoxShape.rectangle,
@@ -24,9 +24,9 @@ class BikeInfoItem extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
               child:
-                  Text(info, style: kTitleTextStyle.copyWith(fontSize: 20.0)),
+                  Text(info, style: kTitleTextStyle.copyWith(fontSize: 16.0)),
             ),
-            Text(title),
+            Text(title, style: TextStyle(color: Colors.grey[600],fontSize: 12.0), softWrap: true),
           ],
         ),
       ),

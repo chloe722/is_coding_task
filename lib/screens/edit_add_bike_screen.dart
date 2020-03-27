@@ -213,12 +213,9 @@ class _EditAddScreenState extends State<EditAddScreen> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: RoundedButton(
-                label: "SAVE",
-                onPressed: _onSave,
-              )
+            RoundedButton(
+              label: "SAVE",
+              onPressed: _onSave,
             )
           ],
         ));

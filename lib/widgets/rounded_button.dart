@@ -14,7 +14,7 @@ class RoundedButton extends StatelessWidget {
     return ButtonTheme(
       minWidth: SizeConfig.screenWidth,
       padding: EdgeInsets.symmetric(vertical: 16.0),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
       child: RaisedButton(
         color: kDarkGreen,
         child: Text(label, style: TextStyle(color: Colors.white)),
