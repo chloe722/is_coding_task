@@ -14,22 +14,22 @@ class BikeImageSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: imageHeight,
-      width: imageWidth,
-      child: Stack(
-        children: <Widget>[
-          CachedNetworkImage(
+    return Stack(
+      children: <Widget>[
+        Container(
+          height: imageHeight,
+          width: imageWidth,
+          child: CachedNetworkImage(
             imageUrl: bikeItem.photoUrl,
             placeholder: (context, url) => CenterIndicator(),
             fit: BoxFit.contain,
           ),
-          Align(
-            alignment: Alignment.topLeft,
-            child: CategoryTag(bikeItem.category)
-          ),
-        ],
-      ),
+        ),
+        Align(
+          alignment: Alignment.topLeft,
+          child: CategoryTag(bikeItem.category)
+        ),
+      ],
     );
   }
 }

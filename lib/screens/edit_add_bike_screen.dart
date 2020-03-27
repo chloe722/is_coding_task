@@ -13,7 +13,8 @@ import 'package:is_coding_task/widgets/spacer.dart';
 typedef OnSaveCallback = Function(BikeItem bikeItem);
 
 class EditAddScreen extends StatefulWidget {
-  EditAddScreen({this.bikeItem, this.isEditing = false, @required this.onSave}) : assert(onSave != null);
+  EditAddScreen({this.bikeItem, this.isEditing = false, @required this.onSave})
+      : assert(onSave != null);
 
   final BikeItem bikeItem;
   final bool isEditing;
@@ -68,6 +69,7 @@ class _EditAddScreenState extends State<EditAddScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final media = MediaQuery.of(context);
     return Scaffold(
         appBar: AppBar(),
         body: Column(
@@ -83,8 +85,8 @@ class _EditAddScreenState extends State<EditAddScreen> {
                           imageUrl: _bikePhotoUrl,
                           placeholder: (context, url) => CenterIndicator(),
                           fit: BoxFit.contain,
-                          height: SizeConfig.screenHeight / 4,
-                          width: SizeConfig.screenWidth),
+                          height: media.size.height / 4,
+                          width: media.size.width,),
                       VerticalSpacer(height: 24),
                       TextFormField(
                         autofocus: !_isEditing,
@@ -94,7 +96,8 @@ class _EditAddScreenState extends State<EditAddScreen> {
                         decoration: kFormFieldDecoration.copyWith(
                             contentPadding: EdgeInsets.symmetric(
                                 vertical: 24.0, horizontal: 16.0),
-                            labelText: kBikeNameLabel, icon: Icon(Icons.label)),
+                            labelText: kBikeNameLabel,
+                            icon: Icon(Icons.label)),
                         validator: (val) {
                           return val.trim().isEmpty
                               ? kBikeNameErrorLabel
@@ -119,9 +122,10 @@ class _EditAddScreenState extends State<EditAddScreen> {
                         value: _selectedCategory,
                         items: categories
                             .map((category) => DropdownMenuItem(
-                          child: Text(category),
-                          value: category,
-                        )).toList(),
+                                  child: Text(category),
+                                  value: category,
+                                ))
+                            .toList(),
                       ),
                       VerticalSpacer(height: 24),
                       TextFormField(
@@ -192,7 +196,6 @@ class _EditAddScreenState extends State<EditAddScreen> {
                         initialValue:
                             _isEditing ? widget.bikeItem.description : "",
                         keyboardType: TextInputType.multiline,
-
                         maxLines: null,
                         decoration: kFormFieldDecoration.copyWith(
                             contentPadding: EdgeInsets.symmetric(

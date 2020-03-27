@@ -12,7 +12,7 @@ class RoundedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ButtonTheme(
-      minWidth: SizeConfig.screenWidth,
+      minWidth: double.infinity,
       padding: EdgeInsets.symmetric(vertical: 16.0),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
       child: RaisedButton(

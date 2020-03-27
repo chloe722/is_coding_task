@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:is_coding_task/bloc/barrel.dart';
 import 'package:is_coding_task/routes.dart';
-import 'package:is_coding_task/size_config.dart';
 import 'package:is_coding_task/widgets/bike_item_card.dart';
 import 'package:is_coding_task/widgets/center_indicator.dart';
 

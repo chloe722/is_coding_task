@@ -62,7 +62,7 @@ class DetailScreen extends StatelessWidget {
                     BikeImageSection(
                         bikeItem: bikeItem,
                         imageWidth: media.size.width,
-                        imageHeight: media.size.height / 2.5),
+                        imageHeight: media.size.height / 3),
                     IconItemRow(
                         label: bikeItem.location, icon: Icons.location_on),
                     VerticalSpacer(),

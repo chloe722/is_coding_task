@@ -50,8 +50,8 @@ class ImageCategorySection extends StatelessWidget {
       children: <Widget>[
         BikeImageSection(
           bikeItem: bikeItem,
-          imageWidth: media.size.width,
-          imageHeight: media.size.height / 3,
+            imageWidth: media.size.width,
+            imageHeight: media.size.height / 5,
 
         ),
         Align(
