@@ -11,7 +11,7 @@ import 'package:is_coding_task/repository.dart';
 class BikeShopBloc extends Bloc<BikeShopEvent, BikeShopState> {
   final Repository repository;
 
-  BikeShopBloc({@required this.repository});
+  BikeShopBloc({@required this.repository}): assert (repository != null);
 
   @override
   BikeShopState get initialState => BikeShopLoading();
@@ -35,7 +35,9 @@ class BikeShopBloc extends Bloc<BikeShopEvent, BikeShopState> {
 
   Stream<BikeShopState> _mapLoadBikeShopToState() async* {
     final List<BikeItem> bikes = await repository.loadBikes();
+
     yield BikeShopLoaded(bikes);
+
   }
 
   Stream<BikeShopState> _mapAddBikeItemToState(AddBikeItem event) async* {

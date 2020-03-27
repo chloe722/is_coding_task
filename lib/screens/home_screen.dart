@@ -7,16 +7,15 @@ import 'package:is_coding_task/widgets/bike_item_card.dart';
 import 'package:is_coding_task/widgets/center_indicator.dart';
 
 class HomeScreen extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.pushNamed(context, Routes.addBikeItem),
         child: Icon(Icons.add),
       ),
       body: BlocBuilder<BikeShopBloc, BikeShopState>(
-
         builder: (context, state) {
           if (state is BikeShopLoading) {
             return CenterIndicator();

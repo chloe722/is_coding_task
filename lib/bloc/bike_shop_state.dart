@@ -27,3 +27,4 @@ class BikeShopLoaded extends BikeShopState{
 
 
 class BikeShopNotLoaded extends BikeShopState{}
+

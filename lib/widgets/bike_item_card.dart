@@ -45,12 +45,14 @@ class ImageCategorySection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final media = MediaQuery.of(context);
     return Stack(
       children: <Widget>[
         BikeImageSection(
           bikeItem: bikeItem,
-          imageHeight: SizeConfig.screenHeight / 5,
-          imageWidth: SizeConfig.screenWidth,
+          imageWidth: media.size.width,
+          imageHeight: media.size.height / 3,
+
         ),
         Align(
           alignment: Alignment.topRight,

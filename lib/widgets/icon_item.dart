@@ -15,7 +15,7 @@ class IconItemRow extends StatelessWidget {
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.only(right: 4.0),
-          child: Icon(icon, size: SizeConfig.safeBlockHorizontal * 5),
+          child: Icon(icon, size: 15),
         ),
         Text(label, softWrap: true)
       ],

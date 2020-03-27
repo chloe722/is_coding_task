@@ -7,10 +7,11 @@ import 'package:is_coding_task/repository.dart';
 import 'package:is_coding_task/routes.dart';
 import 'package:is_coding_task/screens/edit_add_bike_screen.dart';
 import 'package:is_coding_task/screens/home_screen.dart';
+import 'package:is_coding_task/size_config.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   BlocSupervisor.delegate = SimpleBlocDelegate();
-
   runApp(BlocProvider(
       create: (context) {
         return BikeShopBloc(
