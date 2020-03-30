@@ -26,6 +26,8 @@ class BikeShopBloc extends Bloc<BikeShopEvent, BikeShopState> {
       yield* _mapUpdateBikeItemToState(event);
     } else if (event is DeleteBikeItem) {
       yield* _mapDeleteBikeItemToState(event);
+    } else if (event is ToggledDelete) {
+      yield* _mapToggleDeleteToState(event);
     }
   }
 
@@ -61,10 +63,16 @@ class BikeShopBloc extends Bloc<BikeShopEvent, BikeShopState> {
     if (state is BikeShopLoaded) {
       final updatedBikes = (state as BikeShopLoaded)
           .bikes
-          .where((bike) => bike.id != event.bikeItem.id)
+          .where((bike) => !event.bikeItems.contains(bike))
           .toList();
       yield BikeShopLoaded(updatedBikes);
       _saveBikes(updatedBikes);
+    }
+  }
+
+  Stream<BikeShopState> _mapToggleDeleteToState(ToggledDelete event) async* {
+    if (state is ToggledDeleteState) {
+      yield ToggledDeleteState(event.toggledDelete);
     }
   }
 

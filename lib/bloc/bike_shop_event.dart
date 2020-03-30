@@ -37,13 +37,29 @@ class UpdateBikeItem extends BikeShopEvent {
 }
 
 class DeleteBikeItem extends BikeShopEvent {
-  final BikeItem bikeItem;
+  final List<BikeItem> bikeItems;
 
-  const DeleteBikeItem(this.bikeItem);
-
-  @override
-  List<Object> get props => [bikeItem];
+  const DeleteBikeItem(this.bikeItems);
 
   @override
-  String toString() => "DeleteBikeItem{bikeItem: $bikeItem}";
+  List<Object> get props => [bikeItems];
+
+  @override
+  String toString() => "DeleteBikeItem{bikeItems: $bikeItems}";
+}
+
+class ToggledDelete extends BikeShopEvent{
+  final bool toggledDelete;
+
+  const ToggledDelete(this.toggledDelete);
+
+
+  @override
+  List<Object> get props => [toggledDelete];
+
+  @override
+  String toString() {
+    return 'DeletedItemActivated{deleteActivated: $toggledDelete}';
+  }
+
 }
