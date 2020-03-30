@@ -52,14 +52,15 @@ class _EditAddScreenState extends State<EditAddScreen> {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
 
-      BikeItem _bikeItem = BikeItem(
+      BikeItem _bikeItem = (widget.bikeItem ?? BikeItem()).copyWith(
           name: _bikeName,
           category: _selectedCategory,
           location: _location,
           frameSize: _selectedFrameSize,
           priceRange: _selectedPrice,
           description: _description,
-          photoUrl: _bikePhotoUrl);
+          photoUrl: _bikePhotoUrl
+      );
 
       widget.onSave(_bikeItem);
       Navigator.pop(context);

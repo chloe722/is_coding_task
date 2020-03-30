@@ -53,19 +53,6 @@ class BikeItem extends Equatable {
     }
   }
 
-  BikeItem mergeWith(BikeItem bikeItem) {
-
-    return copyWith(
-        name: bikeItem.name,
-        category: bikeItem.category,
-        location: bikeItem.location,
-        frameSize: bikeItem.frameSize,
-        priceRange: bikeItem.priceRange,
-        description: bikeItem.description,
-        photoUrl: bikeItem.photoUrl);
-
-  }
-
   BikeItem copyWith(
       {String id,
       String frameSize,

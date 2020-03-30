@@ -45,7 +45,6 @@ class BikeShopBloc extends Bloc<BikeShopEvent, BikeShopState> {
       final List<BikeItem> updatedBikes =
           List.from((state as BikeShopLoaded).bikes)..add(event.bikeItem);
       yield BikeShopLoaded(updatedBikes);
-
       _saveBikes(updatedBikes);
     }
   }
@@ -55,7 +54,7 @@ class BikeShopBloc extends Bloc<BikeShopEvent, BikeShopState> {
       final List<BikeItem> updatedBikes =
           (state as BikeShopLoaded).bikes.map((bike) {
             return bike.id == event.updatedBikeItem.id
-            ?  bike.mergeWith(event.updatedBikeItem)
+            ? event.updatedBikeItem
             : bike;
       }).toList();
       yield BikeShopLoaded(updatedBikes);
