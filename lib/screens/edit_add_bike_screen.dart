@@ -223,7 +223,7 @@ class _EditAddScreenState extends State<EditAddScreen> {
             ),
             RoundedButton(
               key: Key("SaveButton"),
-              label: "SAVE",
+              label: kSaveButtonLabel,
               color: kDarkGreen,
               onPressed: _onSave,
             )

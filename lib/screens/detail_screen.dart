@@ -18,7 +18,7 @@ class DetailScreen extends StatelessWidget {
 
   void _onSave({BikeItem bikeItemVal, BuildContext contextVal}) {
     BlocProvider.of<BikeShopBloc>(contextVal).add(UpdateBikeItem(bikeItemVal));
-    ToastHelper().showToastMsg(msg: "Edited bike info successed");
+    ToastHelper().showToastMsg(msg: kEditBikeInfoSuccessMsg);
   }
 
   @override

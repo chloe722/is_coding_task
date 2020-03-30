@@ -4,6 +4,7 @@ import 'package:is_coding_task/bloc/barrel.dart';
 import 'package:is_coding_task/constants.dart';
 import 'package:is_coding_task/model/bike_item.dart';
 import 'package:is_coding_task/routes.dart';
+import 'package:is_coding_task/strings.dart';
 import 'package:is_coding_task/widgets/bike_item_card.dart';
 import 'package:is_coding_task/widgets/center_indicator.dart';
 import 'package:is_coding_task/widgets/rounded_button.dart';
@@ -98,14 +99,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         _toggledDelete
                             ? RoundedButton(
                                 key: Key("DeleteButton"),
-                                label: "Delete",
+                                label: kDeleteButtonLabel,
                                 color: kDeleteButtonColor,
                                 onPressed: _delete)
                             : Container(child: null)
                       ],
                     )
                   : Container(
-                      child: Text("No item found. Please add item"),
+                      child: Text(kNoItemFoundMsg),
                     )),
         );
       } else {

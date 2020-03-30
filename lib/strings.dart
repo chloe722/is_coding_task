@@ -18,3 +18,10 @@ const kFrameSizeError = "Please select frame size";
 
 const kBikePriceRangeLabel = "Price Range";
 const kPriceRangeError = "Please select price range";
+
+const kEditBikeInfoSuccessMsg = "edited bike info successed";
+
+const kSaveButtonLabel = "Save";
+const kDeleteButtonLabel = "Delete";
+
+const kNoItemFoundMsg = "No item found. Please add item";
