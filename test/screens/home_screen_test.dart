@@ -34,10 +34,8 @@ void main() {
     testWidgets("home while loading", (WidgetTester tester) async {
       when(bikeShopBloc.state).thenReturn(BikeShopLoading());
       await tester.pumpWidget(homeScreen);
-      expect(find.byIcon(Icons.add), findsOneWidget);
-      expect(find.byType(Scaffold), findsOneWidget);
       expect(find.byType(CenterIndicator), findsOneWidget);
-      expect(find.byType(FloatingActionButton), findsOneWidget);
+
     });
 
     testWidgets("bikes loaded",
@@ -47,6 +45,9 @@ void main() {
           await tester.pumpWidget(homeScreen);
           expect(find.byType(ListView), findsWidgets);
           expect(find.byType(BikeItemCard), findsWidgets);
+          expect(find.byIcon(Icons.add), findsOneWidget);
+          expect(find.byType(Scaffold), findsOneWidget);
+          expect(find.byType(FloatingActionButton), findsOneWidget);
         });
 
   });
