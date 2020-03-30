@@ -26,7 +26,6 @@ class BikeShopApp extends StatelessWidget {
     return MaterialApp(
       title: 'Bike Shop',
       theme: ThemeData(
-
         floatingActionButtonTheme:
             FloatingActionButtonThemeData(backgroundColor: kDarkGreen),
         appBarTheme: AppBarTheme(

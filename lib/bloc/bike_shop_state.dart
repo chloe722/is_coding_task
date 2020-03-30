@@ -23,18 +23,3 @@ class BikeShopLoaded extends BikeShopState {
 }
 
 class BikeShopNotLoaded extends BikeShopState {}
-
-class ToggledDeleteState extends BikeShopState{
-  final bool toggledDelete;
-
-  ToggledDeleteState(this.toggledDelete);
-
-
-  @override
-  String toString() {
-    return 'ToggledDeleteState{toggledDelete: $toggledDelete}';
-  }
-
-
-}
-

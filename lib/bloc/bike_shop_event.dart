@@ -47,18 +47,3 @@ class DeleteBikeItem extends BikeShopEvent {
   @override
   String toString() => "DeleteBikeItem{bikeItems: $bikeItems}";
 }
-
-class ToggledDelete extends BikeShopEvent{
-  final bool toggledDelete;
-
-  const ToggledDelete(this.toggledDelete);
-
-  @override
-  List<Object> get props => [toggledDelete];
-
-  @override
-  String toString() {
-    return 'DeletedItemActivated{deleteActivated: $toggledDelete}';
-  }
-
-}

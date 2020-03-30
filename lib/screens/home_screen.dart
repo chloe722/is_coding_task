@@ -17,16 +17,11 @@ class _HomeScreenState extends State<HomeScreen> {
   bool _toggledDelete = false;
   List<BikeItem> selectedBikeItems = [];
 
-  void _toggleDelete(bool toggled) {
-    if (toggled) {
-      setState(() {
-        _toggledDelete = false;
-      });
-    } else {
-      setState(() {
-        _toggledDelete = true;
-      });
-    }
+  void _toggleDelete() {
+    setState(() {
+      selectedBikeItems.clear();
+      _toggledDelete = !_toggledDelete;
+    });
   }
 
   void _toggleSelection(BikeItem bikeItem) {
@@ -42,6 +37,31 @@ class _HomeScreenState extends State<HomeScreen> {
   void _delete() {
     BlocProvider.of<BikeShopBloc>(context)
         .add(DeleteBikeItem(selectedBikeItems));
+    setState(() {
+      _toggledDelete = false;
+    });
+  }
+
+  Widget buildHomeAppBar() {
+    return _toggledDelete
+        ? AppBar(
+            backgroundColor: kDarkGreen,
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(Icons.close, color: Colors.grey[50]),
+                onPressed: _toggleDelete,
+              ),
+            ],
+          )
+        : AppBar(
+            backgroundColor: Colors.grey[50],
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(Icons.delete, color: kDarkGreen),
+                onPressed: _toggleDelete,
+              ),
+            ],
+          );
   }
 
   @override
@@ -58,16 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Navigator.pushNamed(context, Routes.addBikeItem),
                   child: Icon(Icons.add),
                 ),
-          appBar: AppBar(
-            backgroundColor: _toggledDelete ? kDarkGreen : Colors.grey[50],
-            actions: <Widget>[
-              IconButton(
-                icon: Icon(_toggledDelete ? Icons.close : Icons.delete,
-                    color: _toggledDelete ? Colors.grey[50] : kDarkGreen),
-                onPressed: () => _toggleDelete(_toggledDelete),
-              ),
-            ],
-          ),
+          appBar: buildHomeAppBar(),
           body: Center(
               child: state.bikes.length > 0
                   ? Column(
@@ -79,9 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               itemBuilder: (context, index) => BikeItemCard(
                                     bikeItem: state.bikes[index],
                                     showCheckbox: _toggledDelete,
-                                    onSelect: (selected) {
-                                      _toggleSelection(state.bikes[index]);
-                                    },
+                                    onSelect: _toggleSelection,
                                     isSelected: selectedBikeItems
                                         .contains(state.bikes[index]),
                                   )),
