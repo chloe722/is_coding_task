@@ -2,17 +2,15 @@ import 'package:equatable/equatable.dart';
 import 'package:is_coding_task/model/bike_item.dart';
 
 abstract class BikeShopEvent extends Equatable {
-
   const BikeShopEvent();
 
   @override
   List<Object> get props => [];
 }
 
-class LoadBikes extends BikeShopEvent{
-}
+class LoadBikes extends BikeShopEvent {}
 
-class AddBikeItem extends BikeShopEvent{
+class AddBikeItem extends BikeShopEvent {
   final BikeItem bikeItem;
 
   const AddBikeItem(this.bikeItem);
@@ -22,10 +20,9 @@ class AddBikeItem extends BikeShopEvent{
 
   @override
   String toString() => "AddBikeItem{bikeItem: $bikeItem}";
-
 }
 
-class UpdateBikeItem extends BikeShopEvent{
+class UpdateBikeItem extends BikeShopEvent {
   final BikeItem updatedBikeItem;
 
   const UpdateBikeItem(this.updatedBikeItem);
@@ -37,7 +34,6 @@ class UpdateBikeItem extends BikeShopEvent{
   String toString() {
     return "UpdateBikeItem{updatedBikeItem: $updatedBikeItem}";
   }
-
 }
 
 class DeleteBikeItem extends BikeShopEvent {
@@ -50,7 +46,4 @@ class DeleteBikeItem extends BikeShopEvent {
 
   @override
   String toString() => "DeleteBikeItem{bikeItem: $bikeItem}";
-
 }
-
-

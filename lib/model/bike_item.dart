@@ -22,23 +22,20 @@ class BikeItem extends Equatable {
       this.description = ""})
       : this.id = id ?? Uuid().v1();
 
-
   factory BikeItem.fromJson(Map<String, Object> json) {
-   return BikeItem(
-     id: json["id"].toString(),
-     frameSize: json["frameSize"],
-     category: json["category"],
-     location: json["location"],
-     name: json["name"],
-     photoUrl: json["photoUrl"],
-     priceRange: json["priceRange"],
-     description: json["description"]
-   );
+    return BikeItem(
+        id: json["id"].toString(),
+        frameSize: json["frameSize"],
+        category: json["category"],
+        location: json["location"],
+        name: json["name"],
+        photoUrl: json["photoUrl"],
+        priceRange: json["priceRange"],
+        description: json["description"]);
   }
 
   String getPriceRange() {
-
-    switch(this.priceRange) {
+    switch (this.priceRange) {
       case "Cheap":
         return "\$";
 
@@ -67,7 +64,7 @@ class BikeItem extends Equatable {
         frameSize: frameSize ?? this.frameSize,
         category: category ?? this.category,
         location: location ?? this.location,
-        name: name?? this.name,
+        name: name ?? this.name,
         photoUrl: photoUrl ?? this.photoUrl,
         priceRange: priceRange ?? this.priceRange,
         description: description ?? this.description);

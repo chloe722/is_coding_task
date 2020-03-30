@@ -1,19 +1,16 @@
 import 'package:equatable/equatable.dart';
 import 'package:is_coding_task/model/bike_item.dart';
 
-abstract class BikeShopState extends Equatable{
-
+abstract class BikeShopState extends Equatable {
   const BikeShopState();
 
   @override
   List<Object> get props => [];
-
 }
 
-class BikeShopLoading extends BikeShopState{}
+class BikeShopLoading extends BikeShopState {}
 
-
-class BikeShopLoaded extends BikeShopState{
+class BikeShopLoaded extends BikeShopState {
   final List<BikeItem> bikes;
 
   const BikeShopLoaded([this.bikes = const []]);
@@ -25,6 +22,4 @@ class BikeShopLoaded extends BikeShopState{
   String toString() => "BikeShopLoaded{bikes: $bikes}";
 }
 
-
-class BikeShopNotLoaded extends BikeShopState{}
-
+class BikeShopNotLoaded extends BikeShopState {}

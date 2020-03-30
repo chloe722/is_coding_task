@@ -26,7 +26,9 @@ class BikeInfoItem extends StatelessWidget {
               child:
                   Text(info, style: kTitleTextStyle.copyWith(fontSize: 16.0)),
             ),
-            Text(title, style: TextStyle(color: Colors.grey[600],fontSize: 12.0), softWrap: true),
+            Text(title,
+                style: TextStyle(color: Colors.grey[600], fontSize: 12.0),
+                softWrap: true),
           ],
         ),
       ),

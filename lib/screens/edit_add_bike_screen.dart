@@ -59,8 +59,7 @@ class _EditAddScreenState extends State<EditAddScreen> {
           frameSize: _selectedFrameSize,
           priceRange: _selectedPrice,
           description: _description,
-          photoUrl: _bikePhotoUrl
-      );
+          photoUrl: _bikePhotoUrl);
 
       widget.onSave(_bikeItem);
       Navigator.pop(context);
@@ -83,11 +82,12 @@ class _EditAddScreenState extends State<EditAddScreen> {
                     key: Key("FormListView"),
                     children: <Widget>[
                       CachedNetworkImage(
-                          imageUrl: _bikePhotoUrl,
-                          placeholder: (context, url) => CenterIndicator(),
-                          fit: BoxFit.contain,
-                          height: media.size.height / 4,
-                          width: media.size.width,),
+                        imageUrl: _bikePhotoUrl,
+                        placeholder: (context, url) => CenterIndicator(),
+                        fit: BoxFit.contain,
+                        height: media.size.height / 4,
+                        width: media.size.width,
+                      ),
                       VerticalSpacer(height: 24),
                       TextFormField(
                         key: Key("BikeNameFormField"),

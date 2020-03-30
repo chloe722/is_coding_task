@@ -22,9 +22,7 @@ class SizeRoute extends PageRouteBuilder {
                     begin: 0.0,
                     end: 1.0,
                   ).animate(CurvedAnimation(
-                    parent: animation,
-                    curve: Curves.fastOutSlowIn
-                  )),
+                      parent: animation, curve: Curves.fastOutSlowIn)),
                   child: child,
                 ));
 }
