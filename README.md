@@ -15,6 +15,7 @@ Install Android Studio. Please skip if you alreayd have
 Haved XCode install if you wish to run the project with iOS emulator
 
 
+### Install Flutter
 * Make sure have [Flutter](https://flutter.dev/docs/get-started/install) installed in your local machine
 
 * Note: Make sure have emulator device exist. If you don't have, please run `flutter emulators --create [--name xyz]`.
@@ -48,6 +49,12 @@ flutter test
 ## Tech/Frameworks 
 * Developed with [Flutter](https://flutter.dev/docs/get-started/install) using [Dart language](https://dart.dev/)
 * Used [flutter_bloc](https://pub.dev/packages/flutter_bloc) to architec the code
+
+
+## Screenshot
+
+![](assets/screenshot_1.gif)
+![](assets/screenshot_2.gif)
 
 
 
