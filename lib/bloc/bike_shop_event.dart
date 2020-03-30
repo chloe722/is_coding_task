@@ -53,7 +53,6 @@ class ToggledDelete extends BikeShopEvent{
 
   const ToggledDelete(this.toggledDelete);
 
-
   @override
   List<Object> get props => [toggledDelete];
 

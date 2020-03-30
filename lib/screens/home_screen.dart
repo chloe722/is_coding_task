@@ -90,6 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ? RoundedButton(
                                 key: Key("DeleteButton"),
                                 label: "Delete",
+                                color: kDeleteButtonColor,
                                 onPressed: _delete)
                             : Container(child: null)
                       ],

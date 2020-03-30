@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 const kCustomGreen = Color(0xFF04e1aa);
 const kDarkGreen = Color(0xFF163b52);
 const kFormFieldBgColor = Color(0xFFECEFF1);
+const kSelectedColor = Colors.amber;
+const kDeleteButtonColor = Colors.redAccent;
 
 const kCategoryTagTextStyle = TextStyle(
   color: kDarkGreen,

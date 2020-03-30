@@ -48,26 +48,13 @@ class BikeItemCard extends StatelessWidget {
                 ),
 
           ),
-          //          toggledDelete?
-//         Align(alignment: Alignment.topRight,
-//          child: IconButton(
-//            onPressed: () {
-////              BlocProvider.of<BikeShopBloc>(context)
-////                  .add(DeleteBikeItem(bikeItem));
-//            },
-//            icon: Icon(
-//              Icons.delete_outline,
-//              size: 35.0,
-//            ),
-//          ),
-//        ) : Container(child: null)
-
+          
           showCheckbox? Align(
               alignment: Alignment.topRight,
               child: Checkbox(
-                checkColor: kDarkGreen,
+                checkColor: Colors.grey[50],
                 onChanged: onSelect,
-
+                activeColor: kSelectedColor,
                 value: isSelected,
               )
           ) : Container(child: null)
