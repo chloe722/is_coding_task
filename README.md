@@ -1,16 +1,61 @@
-# is_coding_task
-
-A new Flutter application.
+# IS_coding_task
 
 ## Getting Started
+These instructions will help you start running the project on your local machine.
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Prerequisites
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Install Androd Studio
+
+Install Android Studio. Please skip if you alreayd have 
+
+### Install XCode
+Haved XCode install if you wish to run the project with iOS emulator
+
+
+* Make sure have [Flutter](https://flutter.dev/docs/get-started/install) installed in your local machine
+
+* Note: Make sure have emulator device exist. If you don't have, please run `flutter emulators --create [--name xyz]`.
+```
+flutter emulators create--launch Nexus_6P
+```
+
+# Running
+* Clone this repo to your local machine using https://github.com/chloe722/is_coding_task.git
+* Run `flutter emulator` in command line inside the folder to find your avalibale emulator. 
+* Run `flutter emulators --launch <emulator id>` in command line to start the emulator
+
+```
+$cd../is_coding_task
+$flutter emulator
+$flutter emulators --launch <emulator id>
+```
+
+* Run `flutter run` to run the project
+```
+$flutter run
+```
+
+### Running Test
+
+Enter `flutter test` to run tests in command line
+```
+flutter test
+```
+
+## Tech/Frameworks 
+* Developed with [Flutter](https://flutter.dev/docs/get-started/install) using [Dart language](https://dart.dev/)
+* Used [flutter_bloc](https://pub.dev/packages/flutter_bloc) to architec the code
+
+
+
+
+
+
+
+
+
+
+
