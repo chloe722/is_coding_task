@@ -4,31 +4,53 @@ import 'package:is_coding_task/bloc/barrel.dart';
 import 'package:is_coding_task/constants.dart';
 import 'package:is_coding_task/model/bike_item.dart';
 import 'package:is_coding_task/screens/edit_add_bike_screen.dart';
-import 'package:is_coding_task/size_config.dart';
 import 'package:is_coding_task/strings.dart';
+import 'package:is_coding_task/toast_helper.dart';
 import 'package:is_coding_task/widgets/spacer.dart';
 import 'package:is_coding_task/widgets/bike_image_section.dart';
 import 'package:is_coding_task/widgets/bike_info_item.dart';
 import 'package:is_coding_task/widgets/icon_item.dart';
 
-class DetailScreen extends StatelessWidget {
+class DetailScreen extends StatefulWidget {
   DetailScreen(this.bikeId) : assert(bikeId != null);
 
   final String bikeId;
 
   @override
+  _DetailScreenState createState() => _DetailScreenState();
+}
+
+class _DetailScreenState extends State<DetailScreen> {
+   BikeShopBloc bikeShopBloc;
+
+  @override
+  void initState() {
+    bikeShopBloc = BlocProvider.of<BikeShopBloc>(context);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    bikeShopBloc.close();
+    super.dispose();
+  }
+
+  void _onSave(BikeItem bikeItemVal){
+      bikeShopBloc.add(UpdateBikeItem(bikeItemVal));
+      ToastHelper().showToastMsg(msg: "Edited bike info successed");
+
+  }
+
+  @override
   Widget build(BuildContext context) {
     final media = MediaQuery.of(context);
-    final bikeShopBloc = BlocProvider.of<BikeShopBloc>(context);
-
     return BlocBuilder<BikeShopBloc, BikeShopState>(
         bloc: bikeShopBloc,
         builder: (context, state) {
-          print("state in detailScreen: $state");
-
           final bikeItem = (state as BikeShopLoaded)
               .bikes
-              .firstWhere((bike) => bike.id == bikeId, orElse: () => null);
+              .firstWhere((bike) => bike.id == widget.bikeId, orElse: () => null);
+
           return Scaffold(
             appBar: AppBar(
               actions: <Widget>[
@@ -38,18 +60,7 @@ class DetailScreen extends StatelessWidget {
                     builder: (context) => EditAddScreen(
                         bikeItem: bikeItem,
                         isEditing: true,
-                        onSave: (bikeItemVal) {
-                              bikeShopBloc.add(UpdateBikeItem(
-                            bikeItem.copyWith(
-                                name: bikeItemVal.name,
-                                category: bikeItemVal.category,
-                                location: bikeItemVal.location,
-                                frameSize: bikeItemVal.frameSize,
-                                priceRange: bikeItemVal.priceRange,
-                                description: bikeItemVal.description,
-                                photoUrl: bikeItemVal.photoUrl),
-                          ));
-                        }),
+                        onSave: _onSave),
                   )),
                   color: kDarkGreen,
                 )
@@ -81,7 +92,7 @@ class DetailScreen extends StatelessWidget {
                             info: bikeItem.frameSize),
                         BikeInfoItem(
                             title: kBikePriceRangeLabel,
-                            info: bikeItem.priceRange),
+                            info: bikeItem.getPriceRange()),
                       ],
                     ),
                   ],

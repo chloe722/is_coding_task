@@ -31,11 +31,12 @@ dependencies:
   cached_network_image: 2.0.0
   fluttertoast: 4.0.1
   mockito: 4.1.1
-  bloc_test: 4.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  bloc_test: 4.0.0
+
 
 
 # For information on the generic Dart part of this file, see the

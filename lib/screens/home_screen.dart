@@ -6,7 +6,6 @@ import 'package:is_coding_task/widgets/bike_item_card.dart';
 import 'package:is_coding_task/widgets/center_indicator.dart';
 
 class HomeScreen extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,12 +19,16 @@ class HomeScreen extends StatelessWidget {
             return CenterIndicator();
           } else if (state is BikeShopLoaded) {
             return Center(
-                  child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: state.bikes.length,
-                      itemBuilder: (context, index) => BikeItemCard(
-                            state.bikes[index],
-                          )));
+                child: state.bikes.length > 0
+                    ? ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: state.bikes.length,
+                        itemBuilder: (context, index) => BikeItemCard(
+                              state.bikes[index],
+                            ))
+                    : Container(
+                        child: Text("No item found. Please add item"),
+                      ));
           } else {
             return Container(child: null);
           }

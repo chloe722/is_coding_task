@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:is_coding_task/size_config.dart';
 
 class IconItemRow extends StatelessWidget {
   IconItemRow({@required this.label, @required this.icon})

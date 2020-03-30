@@ -30,4 +30,5 @@ const kFormFieldDecoration = InputDecoration(
 
 
 // Hard coded image for adding new bike item, because uploaded image feature is not implemented
-const bikePlaceHolderImage = "https://images.internetstores.de/products//1066019/02/0af2f2/Cube_Touring_Hybrid_EXC_500_Trapez_iridium_n_green[640x480].jpg?forceSize=true&forceAspectRatio=true&useTrim=true";
+const kBikeTempImage = "https://www.bikecraze.com/v/vspfiles/photos/1091091056-2.jpg?v-cache=1539322658";
+

@@ -7,7 +7,7 @@ import 'package:is_coding_task/repository.dart';
 import 'package:is_coding_task/routes.dart';
 import 'package:is_coding_task/screens/edit_add_bike_screen.dart';
 import 'package:is_coding_task/screens/home_screen.dart';
-import 'package:is_coding_task/size_config.dart';
+import 'package:is_coding_task/toast_helper.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,7 +31,7 @@ class BikeShopApp extends StatelessWidget {
             FloatingActionButtonThemeData(backgroundColor: kDarkGreen),
         appBarTheme: AppBarTheme(
             elevation: 0.0,
-            color: Colors.white,
+            color: Colors.grey[50],
             iconTheme: IconThemeData(color: kDarkGreen)),
       ),
       routes: {

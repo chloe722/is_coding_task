@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:is_coding_task/constants.dart';
-import 'package:is_coding_task/size_config.dart';
 
 class RoundedButton extends StatelessWidget {
-  RoundedButton({this.label, this.onPressed})
-      : assert(label != null, onPressed != null);
+  RoundedButton({this.label, this.onPressed, this.key})
+      : assert(label != null, onPressed != null), super(key: key);
 
   final String label;
+  final Key key;
   final VoidCallback onPressed;
 
   @override

@@ -4,7 +4,6 @@ import 'package:flutter/widgets.dart';
 import 'package:is_coding_task/constants.dart';
 import 'package:is_coding_task/model/bike_item.dart';
 import 'package:is_coding_task/model/data.dart';
-import 'package:is_coding_task/size_config.dart';
 import 'package:is_coding_task/strings.dart';
 import 'package:is_coding_task/widgets/center_indicator.dart';
 import 'package:is_coding_task/widgets/rounded_button.dart';
@@ -44,7 +43,7 @@ class _EditAddScreenState extends State<EditAddScreen> {
       _selectedPrice = widget.bikeItem.priceRange;
       _bikePhotoUrl = widget.bikeItem.photoUrl;
     } else {
-      _bikePhotoUrl = bikePlaceHolderImage;
+      _bikePhotoUrl = kBikeTempImage;
     }
     super.initState();
   }
@@ -80,6 +79,7 @@ class _EditAddScreenState extends State<EditAddScreen> {
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 24.0),
                   child: ListView(
+                    key: Key("FormListView"),
                     children: <Widget>[
                       CachedNetworkImage(
                           imageUrl: _bikePhotoUrl,
@@ -89,7 +89,8 @@ class _EditAddScreenState extends State<EditAddScreen> {
                           width: media.size.width,),
                       VerticalSpacer(height: 24),
                       TextFormField(
-                        autofocus: !_isEditing,
+                        key: Key("BikeNameFormField"),
+                        focusNode: FocusNode(canRequestFocus: false),
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
                         initialValue: _isEditing ? widget.bikeItem.name : "",
@@ -107,6 +108,7 @@ class _EditAddScreenState extends State<EditAddScreen> {
                       ),
                       VerticalSpacer(height: 24),
                       DropdownButtonFormField(
+                        key: Key("CategoryDropDown"),
                         decoration: kFormFieldDecoration.copyWith(
                             labelText: kCategoryLabel,
                             icon: Icon(Icons.category)),
@@ -129,7 +131,8 @@ class _EditAddScreenState extends State<EditAddScreen> {
                       ),
                       VerticalSpacer(height: 24),
                       TextFormField(
-                        autofocus: !_isEditing,
+                        key: Key("LocationFormField"),
+                        focusNode: FocusNode(canRequestFocus: false),
                         initialValue:
                             _isEditing ? widget.bikeItem.location : "",
                         keyboardType: TextInputType.multiline,
@@ -192,7 +195,8 @@ class _EditAddScreenState extends State<EditAddScreen> {
                       ),
                       VerticalSpacer(height: 24),
                       TextFormField(
-                        autofocus: !_isEditing,
+                        key: Key("DesFormField"),
+                        focusNode: FocusNode(canRequestFocus: false),
                         initialValue:
                             _isEditing ? widget.bikeItem.description : "",
                         keyboardType: TextInputType.multiline,
@@ -217,6 +221,7 @@ class _EditAddScreenState extends State<EditAddScreen> {
               ),
             ),
             RoundedButton(
+              key: Key("SaveButton"),
               label: "SAVE",
               onPressed: _onSave,
             )

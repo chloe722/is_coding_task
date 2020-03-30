@@ -36,6 +36,35 @@ class BikeItem extends Equatable {
    );
   }
 
+  String getPriceRange() {
+
+    switch(this.priceRange) {
+      case "Cheap":
+        return "\$";
+
+      case "Normal":
+        return "\$\$";
+
+      case "Expensive":
+        return "\$\$\$";
+
+      default:
+        return "";
+    }
+  }
+
+  BikeItem mergeWith(BikeItem bikeItem) {
+
+    return copyWith(
+        name: bikeItem.name,
+        category: bikeItem.category,
+        location: bikeItem.location,
+        frameSize: bikeItem.frameSize,
+        priceRange: bikeItem.priceRange,
+        description: bikeItem.description,
+        photoUrl: bikeItem.photoUrl);
+
+  }
 
   BikeItem copyWith(
       {String id,
