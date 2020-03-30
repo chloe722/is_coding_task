@@ -53,11 +53,9 @@ flutter test
 
 ## Screenshot
 
-![](assets/screenshot_1.gif)
-![](assets/screenshot_2.gif)
-
-
-
+<p align="center">
+  <img height= "700" src="assets/screenshot.gif">
+</p>
 
 
 
