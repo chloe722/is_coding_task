@@ -20,7 +20,7 @@ Haved XCode install if you wish to run the project with iOS emulator
 
 * Note: Make sure have emulator device exist. If you don't have, please run `flutter emulators --create [--name xyz]`.
 ```
-flutter emulators create--launch Nexus_6P
+＄flutter emulators create--launch Nexus_6P
 ```
 
 # Running
@@ -43,7 +43,7 @@ $flutter run
 
 Enter `flutter test` to run tests in command line
 ```
-flutter test
+＄flutter test
 ```
 
 ## Tech/Frameworks 
