@@ -50,6 +50,15 @@ Enter `flutter test` to run tests in command line
 * Developed with [Flutter](https://flutter.dev/docs/get-started/install) using [Dart language](https://dart.dev/)
 * Used [flutter_bloc](https://pub.dev/packages/flutter_bloc) to architec the code
 
+### packages use in the project
+* [rxdart](https://pub.dev/packages/rxdart)
+* [equatable](https://pub.dev/packages/equatable)
+* [uuid](https://pub.dev/packages/uuid)
+* [cached_network_image](https://pub.dev/packages/cached_network_image)
+* [fluttertoast](https://pub.dev/packages/fluttertoast)
+* [mockito](https://pub.dev/packages/mockito)
+* [bloc_test](https://pub.dev/packages/bloc_test)
+
 
 ## Screenshot
 
